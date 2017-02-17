@@ -65,7 +65,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.07 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm4-zJ-eiO">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0.07 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cm4-zJ-eiO">
                                                     <rect key="frame" x="322" y="13" width="45" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.54656250000000006" green="0.54656250000000006" blue="0.54656250000000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -89,7 +89,7 @@
                                                 <constraint firstItem="Vzd-z2-b79" firstAttribute="top" secondItem="cm4-zJ-eiO" secondAttribute="bottom" constant="2" id="7Dz-PI-93U"/>
                                                 <constraint firstAttribute="trailing" secondItem="cm4-zJ-eiO" secondAttribute="trailing" constant="8" id="9SO-di-4Zg"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DP6-P3-H8P" secondAttribute="bottom" constant="12" id="BWk-hR-GyO"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AUO-y5-reJ" secondAttribute="bottom" constant="12" id="Bgn-Nw-73a"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="AUO-y5-reJ" secondAttribute="bottom" constant="8" id="Bgn-Nw-73a"/>
                                                 <constraint firstItem="cm4-zJ-eiO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WWk-zE-bnL" secondAttribute="trailing" constant="8" id="C9O-5L-PwE"/>
                                                 <constraint firstItem="AUO-y5-reJ" firstAttribute="top" secondItem="g2L-UW-36M" secondAttribute="bottom" constant="19" id="CWV-IH-4M7"/>
                                                 <constraint firstItem="g2L-UW-36M" firstAttribute="leading" secondItem="Qfd-St-PBg" secondAttribute="trailing" constant="6" id="DBA-Qr-KcM"/>
