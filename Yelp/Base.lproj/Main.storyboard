@@ -59,7 +59,7 @@
                                                     <color key="textColor" red="0.54656250000000006" green="0.54656250000000006" blue="0.54656250000000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 Division St. Mission Bay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-wW-xeH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="88 Division St. Mission Bay" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x5A-wW-xeH">
                                                     <rect key="frame" x="81" y="51" width="164" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
@@ -97,6 +97,7 @@
                                                 <constraint firstItem="cm4-zJ-eiO" firstAttribute="top" secondItem="E5P-Di-MXq" secondAttribute="topMargin" constant="5" id="Jqg-cV-A43"/>
                                                 <constraint firstItem="x5A-wW-xeH" firstAttribute="top" secondItem="g2L-UW-36M" secondAttribute="bottom" constant="4" id="LT7-P7-4b5"/>
                                                 <constraint firstItem="WWk-zE-bnL" firstAttribute="leading" secondItem="DP6-P3-H8P" secondAttribute="trailing" constant="8" id="Ptg-C8-hIG"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="x5A-wW-xeH" secondAttribute="trailing" constant="8" id="So8-XM-FA1"/>
                                                 <constraint firstItem="WWk-zE-bnL" firstAttribute="top" secondItem="DP6-P3-H8P" secondAttribute="top" id="Ugx-3u-8n6"/>
                                                 <constraint firstItem="WWk-zE-bnL" firstAttribute="top" secondItem="E5P-Di-MXq" secondAttribute="topMargin" id="Xcq-4O-3X1"/>
                                                 <constraint firstItem="g2L-UW-36M" firstAttribute="centerY" secondItem="Qfd-St-PBg" secondAttribute="centerY" id="Xja-Du-CwE"/>
