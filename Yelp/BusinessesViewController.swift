@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MBProgressHUD
 
-class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class BusinessesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     var businesses: [Business]!
@@ -16,29 +17,18 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
     var searchBar: UISearchBar!
     var searchString: String = ""
     
+    //var isMoreDataLoading = false
+    //var loadingMoreView:InfiniteScrollActivityView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Set row height
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 120
-        
-        Business.searchWithTerm(term: "Thai", completion: { (businesses: [Business]?, error: Error?) -> Void in
-            
-            self.businesses = businesses
-            self.tableView.reloadData()
-            
-            if let businesses = businesses {
-                for business in businesses {
-                    print(business.name!)
-                    print(business.address!)
-                }
-            }
-            
-            }
-        )
         
         // Initialize the UISearchBar
         searchBar = UISearchBar()
@@ -48,24 +38,39 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         searchBar.sizeToFit()
         navigationItem.titleView = searchBar
         
+        /*
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.isHidden = true
+        tableView.addSubview(loadingMoreView!)
+        
+        var insets = tableView.contentInset
+        insets.bottom += InfiniteScrollActivityView.defaultHeight
+        tableView.contentInset = insets */
+        
+        // Initial search with "Thai"
+        searchString = "Thai"
+        doSearch()
+        
         /* Example of Yelp search with more search options specified
-         Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-         self.businesses = businesses
+        Business.searchWithTerm("Restaurants", sort: .Distance, 
+            categories: ["asianfusion", "burgers"], deals: true) 
+            { (businesses: [Business]!, error: NSError!) -> Void in
+                self.businesses = businesses
          
-         for business in businesses {
-         print(business.name!)
-         print(business.address!)
-         }
-         }
+                for business in businesses {
+                    print(business.name!)
+                    print(business.address!)
+                }
+        })
          */
         
     }
     
     // Perform the search.
     func doSearch() {
-        print(searchString)
-        
-        //MBProgressHUD.showAdded(to: self.view, animated: true)
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         
         // Perform request to Yelp API
         Business.searchWithTerm(term: searchString, completion: { (businesses: [Business]?, error: Error?) -> Void in
@@ -80,9 +85,14 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }
             
-        }
-        )
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+            /*if(self.isMoreDataLoading) {
+                self.isMoreDataLoading = false
+                self.loadingMoreView!.stopAnimating()
+            }*/
 
+        })
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,6 +115,26 @@ class BusinessesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         return cell
     }
+    
+    /*func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.isDragging) {
+                isMoreDataLoading = true
+                
+                // Update position of loadingMoreView, and start loading indicator
+                let frame = CGRect(x: 0, y: tableView.contentSize.height, width: tableView.bounds.size.width, height: InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                doSearch()
+            }
+        }
+    }*/
     
     /*
      // MARK: - Navigation
